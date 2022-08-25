@@ -28,17 +28,17 @@ def frame(x: np.ndarray, window_size: int, hop_length: int):
 
 
 def get_window_fn(M: int, name: str = None):
-    """_summary_
+    """function that facilitate the window function. Can be "rectangular", "hann" or "hamming".
 
     Args:
-        M (int): _description_
-        name (str, optional): _description_. Defaults to None.
+        M (int): Size of the frame
+        name (str, optional): Name of the function. Can be "rectangular" (or None), "hann" or "hamming". Defaults to None.
 
     Raises:
-        ValueError: _description_
+        ValueError: If the argument name is not "rectangular" (or None), "hann" or "hamming", raise ValueError
 
     Returns:
-        _type_: _description_
+        window function (np.ndarray): An array of length M.
     """
     if name is None or name == "rectangular":
         return np.ones(M)

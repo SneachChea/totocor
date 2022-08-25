@@ -12,22 +12,21 @@ def autocorr(
     center: bool = True,
     pad_mode: str = "constant", normalization : bool = True,
 ):
-    """_summary_
+    """
+    function that compute the autocorrelation of a signal
 
     Args:
-        signal (np.ndarray): _description_
-        window_size (int): _description_
-        hop_length (int, optional): _description_. Defaults to None.
-        window_fn (str, optional): _description_. Defaults to "hann".
-        center (bool, optional): _description_. Defaults to True.
-        pad_mode (str, optional): _description_. Defaults to "constant".
-        normalization (bool, optional): _description_. Defaults to True.
+        signal (np.ndarray): signal array
+        window_size (int): Window size of the frame for the autocorrelation
+        hop_length (int, optional): Hop length between frames. If None, hop_length = window_size //4.
+        window_fn (str, optional): Windowing function. Can be "rectangular", "hann" or "hamming". Defaults to "hann".
+        center (bool, optional): If true, the signal is padded so the frame at time T is centered at signal[.., T*hop_length]. Defaults to True.
+        pad_mode (str, optional): How the padding is done if the frame is centered. Can be "constant" or "reflect". Defaults to "constant".
+        normalization (bool, optional): If True, the autocorrelation is normalized by the variance of the frame. A warning is raised if the frame is completely silent. Defaults to True.
 
-    Raises:
-        AttributeError: _description_
 
     Returns:
-        _type_: _description_
+        autocorr (np.ndarray): The autocorrelation signal
     """
 
     if hop_length is None:
