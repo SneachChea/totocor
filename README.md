@@ -19,12 +19,12 @@ Totocor takes any numpy array. The last dimension is considered to be the tempor
 **example of use** :
 ```python
 import numpy as np
-from totocor.totocor import autocorr
+from totocor import autocorr
 
 t = np.linspace(0, 1, 8000)
 signal = np.sin(2*np.pi*440*t) # shape [8000]
 
-ac_sig = autocorr(signal, window_size=320, hop_length=160, window_fn="hamming", normalization=True) # shape [51, 320]
+ac_sig = autocorr(signal, window_size=320, hop_length=160, window_fn="hann", normalization=True) # shape [51, 320]
 
 
 ```
